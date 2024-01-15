@@ -1,0 +1,75 @@
+---
+title: "Advanced visualization with ggplot2"
+subtitle: "Challenge 1"
+author: "YOUR NAME"
+format: 
+  html:
+    self-contained: true
+---
+
+# Instructions
+
+**Task:** Using `ggplot2` and other tools in R, recreate the original New York Times graphic to the greatest extent possible. Try to get as close as possible to the figure below:
+
+<center>
+<img src="https://lmyint.github.io/212_spring_2024/images/hw1_goal.png">
+</center>
+
+You will need to use reference pages and documentation to discover necessary tools. For example, you may want to Google search "ggplot multiple plots". When looking through results, check publication dates and use newer references.
+
+**Requirements for passing:**
+
+- Temperature graph
+    - Bands for the record, normal, and actual highs and lows are shown in the correct colors.
+    - Downward triangles point to the record high temperatures above the red band.
+    - Text displays the record high temperatures above the triangles.
+    - X-axis label: 3-letter month abbreviations appear in the middle of each month.
+    - Y-axis label: Tick marks at 0, 40, 80, and 120 only.
+    - Vertical lines separate the months.
+    - Title of "Temperature" is included.
+- Precipitation
+    - Tan area and blue line reflecting the monthly cumulative precipitation is included.
+    - Text (number) for cumulative precipitation for each month is included at the end of each month just above the blue line.
+    - Downward triangles point to the record precipitation days.
+    - Vertical lines separate the months.
+    - Title of "Precipitation" is included.
+- Overall
+    - Both the temperature and precipitation graphs are in one figure.
+    - The temperature plot takes up more vertical space than the precipitation plot.
+    - The title "SFO weather in 2011" is present.
+
+**Extra:** If you'd like further practice, recreate the legend in the temperature graph that shows how the colored lines relate to record, normal, and actual highs.
+
+**Submission:** Click the "Render" button in RStudio to knit a self-contained HTML will all images in embdeded. Commit and push changes to this file as well as the generated HTML. Create a **pull request** to submit your assignment by midnight on Monday 1/29.
+
+
+
+# Setup
+
+```{r}
+# Code for loading packages and reading in data
+```
+
+
+
+# Visualization
+
+```{r}
+# Code for recreating the visualization
+# Use as many code chunks as you need to organize your work well
+```
+
+
+
+
+# AI usage
+
+If you use an AI tool (e.g., ChatGPT, Google Bard) to help with this assignment, please paste below the prompts you use and their associated output
+
+**Prompt:**
+
+**Output:**
+
+Keep in mind that the use of AI has a [huge energy cost](https://lmyint.github.io/212_spring_2024/syllabus.html#artificial-intelligence-ai-use). Please describe an energy-saving activity that you can start engaging in to offset this cost.
+
+**Energy-saving activity:** 
