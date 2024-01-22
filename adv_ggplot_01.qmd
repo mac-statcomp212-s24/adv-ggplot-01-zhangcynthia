@@ -11,9 +11,7 @@ format:
 
 **Task:** Using `ggplot2` and other tools in R, recreate the original New York Times graphic to the greatest extent possible. Try to get as close as possible to the figure below:
 
-<center>
-<img src="https://lmyint.github.io/212_spring_2024/images/hw1_goal.png">
-</center>
+![](https://lmyint.github.io/212_spring_2024/images/hw1_goal.png){width=600, fig-align="center"}
 
 You will need to use reference pages and documentation to discover necessary tools. For example, you may want to Google search "ggplot multiple plots". When looking through results, check publication dates and use newer references.
 
