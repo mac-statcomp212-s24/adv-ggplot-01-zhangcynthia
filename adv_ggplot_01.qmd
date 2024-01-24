@@ -38,7 +38,7 @@ You will need to use reference pages and documentation to discover necessary too
 
 **Extra:** If you'd like further practice, recreate the legend in the temperature graph that shows how the colored lines relate to record, normal, and actual highs.
 
-**Submission:** Click the "Render" button in RStudio to knit a self-contained HTML will all images in embdeded. Commit and push changes to this file as well as the generated HTML. Create a **pull request** to submit your assignment by midnight on Monday 1/29.
+**Submission:** Click the "Render" button in RStudio to knit a self-contained HTML with all images embedded. Commit and push changes to this file as well as the generated HTML. Create a **pull request** to submit your assignment by midnight on Monday 1/29.
 
 
 
