@@ -62,7 +62,7 @@ You will need to use reference pages and documentation to discover necessary too
 
 # AI usage
 
-If you use an AI tool (e.g., ChatGPT, Google Bard) to help with this assignment, please paste below the prompts you use and their associated output
+If you use an AI tool (e.g., ChatGPT, Google Bard) to help with this assignment, please paste below the prompts you use and their associated output.
 
 **Prompt:**
 
