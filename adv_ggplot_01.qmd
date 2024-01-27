@@ -1,7 +1,7 @@
 ---
 title: "Advanced visualization with ggplot2"
 subtitle: "Challenge 1"
-author: "YOUR NAME"
+author: "Cynthia Zhang"
 format: 
   html:
     self-contained: true
@@ -45,7 +45,11 @@ You will need to use reference pages and documentation to discover necessary too
 # Setup
 
 ```{r}
-# Code for loading packages and reading in data
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+weather <- read_csv("https://lmyint.github.io/212_spring_2024/data/sfo_weather.csv")
 ```
 
 
@@ -53,11 +57,54 @@ You will need to use reference pages and documentation to discover necessary too
 # Visualization
 
 ```{r}
-# Code for recreating the visualization
-# Use as many code chunks as you need to organize your work well
+monthStart <- weather %>% filter(Day == 1, Month != 1)
+first_days <- monthStart %>% pull(dateInYear)
+monthMid <- weather %>% filter(Day == 15)
+record <- weather %>% filter(Record == TRUE)
+
+temp <- ggplot(weather) +
+  geom_linerange(aes(x = dateInYear, ymin = RecordLow, ymax = RecordHigh), color = "#ECEBE3", linewidth = 1) +
+  geom_linerange(aes(x = dateInYear, ymin = NormalLow, ymax = NormalHigh), color = "#C8B8BA", linewidth = 1) +
+  geom_linerange(aes(x = dateInYear, ymin = Low, ymax = High), color = "#A90248", linewidth = 1) +
+  geom_vline(xintercept = first_days, lty = "dashed", color = "#B2B2B2") +
+  geom_text(aes(x = dateInYear, y = RecordHigh, label = RecordText), data = record, vjust = -1, hjust = .5, size = 1.5) +
+  geom_point(aes(x = dateInYear, y = RecordHigh + 1), data = record, shape = 25, fill = "black") +
+  scale_x_continuous(breaks = c(monthMid$dateInYear), labels = month.abb, expand = expansion(0)) +
+  scale_y_continuous(n.breaks = 4, limits = c(0, 120)) +
+  labs(title = "Temperature", x = NULL, y = NULL) +
+  theme_classic() +
+  theme(plot.title = element_text(face="bold"),
+        axis.ticks = element_blank(),
+        axis.line.x = element_blank())
+
 ```
 
 
+```{r}
+last_days <- weather %>% group_by(Month) %>% dplyr:::filter(dateInYear == max(dateInYear))
+recordP <- weather %>% dplyr:::filter(RecordP == TRUE)
+
+pre<- ggplot() +
+  geom_line(aes(x = dateInYear, y = CulmPrec, group = Month), data = weather, color = "#32a3d8") +
+  geom_ribbon(aes(x = dateInYear, ymin = 0, ymax = CulmPrec), data = weather, fill = "#ebeae2") +
+  geom_vline(xintercept = first_days, color = "#B2B2B2") +
+  geom_text(aes(x = dateInYear, y = CulmPrec, label = CulmPrec), data = last_days, vjust = .2, hjust = 1) +
+  geom_point(aes(x = dateInYear, y = CulmPrec + .3), data = recordP, shape = 25, fill = "black") +
+  scale_x_continuous(expand = expansion(0)) +
+  scale_y_continuous(breaks = c(4, 8), limits = c(0, 8)) +
+  labs(title = "Precipitation", x = NULL, y = NULL) +
+  theme_classic() +
+  theme(plot.title = element_text(face="bold"),
+        axis.text.x = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line.x = element_blank())
+```
+
+
+```{r}
+plot <- ggarrange(temp, pre, ncol = 1, nrow = 2, heights = c(2, 1))
+annotate_figure(plot, top = text_grob("SFO Weather in 2011", size = 12))
+```
 
 
 # AI usage
@@ -65,9 +112,14 @@ You will need to use reference pages and documentation to discover necessary too
 If you use an AI tool (e.g., ChatGPT, Google Bard) to help with this assignment, please paste below the prompts you use and their associated output.
 
 **Prompt:**
+How to edit the labels of the axes in ggplot R?
+ggarrange how to make one plot takes more space than the other vertically R?
 
 **Output:**
+http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels
+http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/81-ggplot2-easy-way-to-mix-multiple-graphs-on-the-same-page/
 
 Keep in mind that the use of AI has a [huge energy cost](https://lmyint.github.io/212_spring_2024/syllabus.html#artificial-intelligence-ai-use). Please describe an energy-saving activity that you can start engaging in to offset this cost.
 
 **Energy-saving activity:** 
+Walk to the nearby grocery store instead of using transportation.
